@@ -20,7 +20,7 @@ func AllRequests(router *gin.Engine) {
 				id := wallet.Group(":id")
 				{
 					id.POST("send", requests.SendMoneyFromWallet)
-					id.POST("history", requests.TransactionHistory)
+					id.GET("history", requests.TransactionHistory)
 				}
 			}
 		}
