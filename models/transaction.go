@@ -1,7 +1,10 @@
 package models
 
+import "time"
+
 type Transaction struct {
-	From   string
-	To     string  `json:"to"`
-	Amount float32 `json:"amount"`
+	SendTime time.Time
+	From     string
+	To       string  `json:"to"`
+	Amount   float32 `json:"amount"`
 }

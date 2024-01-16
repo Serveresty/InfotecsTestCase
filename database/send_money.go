@@ -39,7 +39,8 @@ func SendMoney(transaction *models.Transaction) error {
 		return err
 	}
 
-	_, err = DB.Exec(context.Background(), `INSERT INTO "transactions" (send_time, from_id, to_id, amount) VALUES($1, $2, $3, $4)`, time.Now(), from.Id, to.Id, transaction.Amount)
+	transaction.SendTime = time.Now()
+	_, err = DB.Exec(context.Background(), `INSERT INTO "transactions" (send_time, from_id, to_id, amount) VALUES($1, $2, $3, $4)`, transaction.SendTime, from.Id, to.Id, transaction.Amount)
 	if err != nil {
 		return err
 	}
