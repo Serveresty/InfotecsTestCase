@@ -1,6 +1,7 @@
 package database
 
 import (
+	"InfotecsTestCase/cerr"
 	"InfotecsTestCase/models"
 	"context"
 )
@@ -11,7 +12,7 @@ func GetWallet(id string) (*models.Wallet, error) {
 	var balance float32
 	err := row.Scan(&balance)
 	if err != nil {
-		return &models.Wallet{}, err
+		return &models.Wallet{}, cerr.WalletNotFound
 	}
 
 	var wallet models.Wallet
