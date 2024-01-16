@@ -1,4 +1,4 @@
-FROM golang:1.21 AS builder
+FROM golang:1.21
 
 WORKDIR /usr/src/app
 
@@ -8,9 +8,7 @@ RUN go mod download
 
 COPY ./ ./
 
-RUN go build -o ./bin/app ./cmd/app/main.go
-
-COPY --from=builder /usr/src/app/bin/app /
+RUN go build -o ./bin/app cmd/app/main.go
 
 EXPOSE 8080
 
