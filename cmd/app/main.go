@@ -32,10 +32,10 @@ func run() error {
 	}
 	defer database.DB.Close(context.Background())
 
-	// err = database.CreateBaseTables()
-	// if err != nil {
-	// 	return err
-	// }
+	err = database.CreateBaseTables()
+	if err != nil {
+		return err
+	}
 
 	router := startRouter()
 
