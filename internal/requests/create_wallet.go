@@ -17,8 +17,8 @@ func CreateWallet(c *gin.Context) {
 
 	err := database.CreateWalletDB(&wallet)
 	if err != nil {
-		c.JSON(http.StatusConflict, gin.H{"error": "Error while creating wallet: " + err.Error()})
+		c.JSON(http.StatusConflict, gin.H{"status": 409, "error": "Error while creating wallet: " + err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"id": wallet.Id, "balance": wallet.Balance})
+	c.JSON(http.StatusOK, gin.H{"status": 200, "id": wallet.Id, "balance": wallet.Balance})
 }
