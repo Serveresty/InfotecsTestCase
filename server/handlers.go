@@ -15,7 +15,7 @@ func AllRequests(router *gin.Engine) {
 
 			wallet := v1.Group("wallet")
 			{
-				wallet.POST(":id", requests.CurrentWalletStatus)
+				wallet.GET(":id", requests.CurrentWalletStatus)
 
 				id := wallet.Group(":id")
 				{
